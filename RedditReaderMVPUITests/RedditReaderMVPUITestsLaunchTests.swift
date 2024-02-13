@@ -2,7 +2,7 @@
 //  RedditReaderMVPUITestsLaunchTests.swift
 //  RedditReaderMVPUITests
 //
-//  Created by TrackimoM1Pro on 02.01.2024.
+//  Created by Denys Zaiakin on 02.01.2024.
 //
 
 import XCTest

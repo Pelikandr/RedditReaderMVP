@@ -2,7 +2,7 @@
 //  JSONParameterEncoder.swift
 //  RedditReaderMVP
 //
-//  Created by TrackimoM1Pro on 06.01.2024.
+//  Created by Denys Zaiakin on 06.01.2024.
 //
 
 import Foundation

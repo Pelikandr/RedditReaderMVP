@@ -2,7 +2,7 @@
 //  ImageService.swift
 //  RedditReaderMVP
 //
-//  Created by TrackimoM1Pro on 12.01.2024.
+//  Created by Denys Zaiakin on 12.01.2024.
 //
 
 import UIKit
@@ -41,18 +41,11 @@ final class ImageService {
     }
 
     func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {
-        guard let imageUrl = URL(string: url) else {
+        guard URL(string: url) != nil else {
             print("Invalid URL: \(url)")
-            completion(.failure("kek"))
+            completion(.failure(""))
             return
         }
-
-        // Check for a special case where the URL is "image"
-//        if url == "image" {
-//            print("Special case: URL is 'image'")
-//            completion?()
-//            return
-//        }
 
         if let cachedImage = getCachedImage(for: url) {
             DispatchQueue.main.async {
