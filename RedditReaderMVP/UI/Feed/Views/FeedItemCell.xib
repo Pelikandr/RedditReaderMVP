@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,33 +40,22 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="in1-h0-8kE" userLabel="Title">
-                                <rect key="frame" x="0.0" y="25" width="353" height="24"/>
+                                <rect key="frame" x="0.0" y="25" width="353" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="C90-ph-cCG"/>
-                                    <constraint firstAttribute="height" priority="250" constant="60" id="RE9-8w-2zG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="C90-ph-cCG"/>
+                                    <constraint firstAttribute="height" priority="250" constant="30" id="RE9-8w-2zG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhH-Ev-ayf">
-                                <rect key="frame" x="0.0" y="54" width="353" height="72"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="140" translatesAutoresizingMaskIntoConstraints="NO" id="mlb-hY-Jju">
-                                        <rect key="frame" x="101.66666666666669" y="0.0" width="150" height="72"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="72" id="1OG-u6-iCn"/>
-                                            <constraint firstAttribute="width" constant="150" id="2OL-xU-9sc"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="140" translatesAutoresizingMaskIntoConstraints="NO" id="mlb-hY-Jju">
+                                <rect key="frame" x="0.0" y="60" width="353" height="66"/>
                                 <constraints>
-                                    <constraint firstItem="mlb-hY-Jju" firstAttribute="top" secondItem="mhH-Ev-ayf" secondAttribute="top" id="DXb-nJ-02h"/>
-                                    <constraint firstAttribute="bottom" secondItem="mlb-hY-Jju" secondAttribute="bottom" id="W7Z-FC-5Ku"/>
-                                    <constraint firstItem="mlb-hY-Jju" firstAttribute="centerX" secondItem="mhH-Ev-ayf" secondAttribute="centerX" id="sNj-L8-Gt8"/>
+                                    <constraint firstAttribute="height" priority="750" constant="320" id="KLE-Xb-Ker"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="320" id="Uf3-yK-3mQ"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdN-Il-WwX">
                                 <rect key="frame" x="0.0" y="131" width="353" height="20"/>
                                 <constraints>
@@ -89,18 +78,11 @@
             <connections>
                 <outlet property="authorLabel" destination="X6M-U3-3h1" id="H80-aR-epc"/>
                 <outlet property="commentsLabel" destination="jdN-Il-WwX" id="f0o-Ow-0OL"/>
-                <outlet property="thumbnailHeightConstraint" destination="1OG-u6-iCn" id="FIL-GX-fcL"/>
-                <outlet property="thumbnailImageView" destination="mlb-hY-Jju" id="SQO-VJ-1ZW"/>
-                <outlet property="thumbnailWidthConstraint" destination="2OL-xU-9sc" id="sL2-Iu-p7q"/>
+                <outlet property="postImageView" destination="mlb-hY-Jju" id="SQO-VJ-1ZW"/>
                 <outlet property="timeLabel" destination="Ast-ka-PxE" id="DWd-mJ-r84"/>
                 <outlet property="titleLabel" destination="in1-h0-8kE" id="PTR-jd-jFe"/>
             </connections>
             <point key="canvasLocation" x="29.770992366412212" y="22.183098591549296"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

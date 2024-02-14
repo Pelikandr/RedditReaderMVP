@@ -17,6 +17,7 @@
 		9A3092232B4B134B00A9FA5F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3092222B4B134B00A9FA5F /* Feed.swift */; };
 		9A54C6E92B7D4BDA006CAAB4 /* ImageDownloadService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54C6E82B7D4BDA006CAAB4 /* ImageDownloadService.framework */; };
 		9A54C6EA2B7D4BDA006CAAB4 /* ImageDownloadService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54C6E82B7D4BDA006CAAB4 /* ImageDownloadService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A54C7022B7D778D006CAAB4 /* UILabel+Underline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54C7012B7D778D006CAAB4 /* UILabel+Underline.swift */; };
 		9A5D475D2B7D48AD00A94802 /* NetworkLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D475C2B7D48AD00A94802 /* NetworkLayer.framework */; };
 		9A5D475E2B7D48AD00A94802 /* NetworkLayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D475C2B7D48AD00A94802 /* NetworkLayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ABC01BA2B4479DA0067A4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC01B92B4479DA0067A4F4 /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 		9A3092202B4B0FC900A9FA5F /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
 		9A3092222B4B134B00A9FA5F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		9A54C6E82B7D4BDA006CAAB4 /* ImageDownloadService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImageDownloadService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A54C7012B7D778D006CAAB4 /* UILabel+Underline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Underline.swift"; sourceTree = "<group>"; };
 		9A5D475C2B7D48AD00A94802 /* NetworkLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ABC01B62B4479DA0067A4F4 /* RedditReaderMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditReaderMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ABC01B92B4479DA0067A4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				9ABC01FC2B448C4E0067A4F4 /* UIView+NibLoading.swift */,
 				9A3092202B4B0FC900A9FA5F /* UITableView+RegisterCell.swift */,
+				9A54C7012B7D778D006CAAB4 /* UILabel+Underline.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				9A3092122B4AEAE600A9FA5F /* RedditTarget.swift in Sources */,
 				9A30921F2B4B0F5F00A9FA5F /* Reusable.swift in Sources */,
 				9A3092212B4B0FC900A9FA5F /* UITableView+RegisterCell.swift in Sources */,
+				9A54C7022B7D778D006CAAB4 /* UILabel+Underline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

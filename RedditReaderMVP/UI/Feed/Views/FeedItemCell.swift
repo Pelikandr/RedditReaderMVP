@@ -12,51 +12,50 @@ final class FeedItemCell: UITableViewCell, XibLoadable, Reusable {
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var thumbnailImageView: UIImageView!
+    @IBOutlet private var postImageView: UIImageView!
     @IBOutlet private var commentsLabel: UILabel!
-
-    @IBOutlet private var thumbnailHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private var thumbnailWidthConstraint: NSLayoutConstraint!
 
     override func prepareForReuse() {
         super.prepareForReuse()
         authorLabel.text = nil
         timeLabel.text = nil
         titleLabel.text = nil
-        thumbnailImageView.image = nil
+        titleLabel.attributedText = nil
+        postImageView.image = nil
+        postImageView.isHidden = false
         commentsLabel.text = nil
-        thumbnailHeightConstraint.constant = 72
     }
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        thumbnailImageView.layer.borderWidth = 1
-        thumbnailImageView.layer.borderColor = UIColor.black.cgColor
-        thumbnailImageView.layer.cornerRadius = 10
+        postImageView.layer.borderWidth = 1
+        postImageView.layer.borderColor = UIColor.black.cgColor
+        postImageView.layer.cornerRadius = 10
     }
 
     func update(with item: FeedItem) {
-        if let thumbnailHeight = item.thumbnailHeight {
-            thumbnailHeightConstraint.constant = CGFloat(thumbnailHeight)
-        }
-
-        if let thumbnailWidth = item.thumbnailWidth {
-            thumbnailWidthConstraint.constant = CGFloat(thumbnailWidth)
-        }
-
-        let loadingImage = UIImage(named: "redditLogo")!.withRenderingMode(.alwaysTemplate)
-        thumbnailImageView.downloadImage(from: item.thumbnail, loadingImage: loadingImage) { [weak self] image in
-            guard image == nil else {
-                return
-            }
-
-            self?.thumbnailImageView.image = UIImage(named: "redditDeadLogo")!
-        }
-        
+        postImageView.isHidden = item.postHint != .image
         authorLabel.text = item.author
         timeLabel.text = Date(timeIntervalSince1970: TimeInterval(item.createdDate)).formatted()
         titleLabel.text = item.title
         commentsLabel.text = "\(item.commentsNumber) coments"
+
+        switch item.postHint {
+        case .link:                 titleLabel.underlineText()
+        case .image:                setupImage(with: item.url)
+        default:                    break
+        }
+    }
+
+    private func setupImage(with urlString: String) {
+        postImageView.isHidden = false
+        let loadingImage = UIImage(named: "redditLogo")!.withRenderingMode(.alwaysTemplate)
+        postImageView.downloadImage(from: urlString, loadingImage: loadingImage) { [weak self] image in
+            guard image == nil else {
+                return
+            }
+
+            self?.postImageView.image = UIImage(named: "redditDeadLogo")!
+        }
     }
 }

@@ -29,17 +29,18 @@ final class FeedViewController: UIViewController {
     }
 }
 
-// MARK: - Private
-extension FeedViewController {
-    func setupNavigationBar() {
-        // TODO: [D. Zaiakin] implement
-    }
-}
-
 // MARK: - FeedViewDelegate
 extension FeedViewController: FeedViewDelegate {
     func updateFeed(with model: Feed) {
         contentView.update(with: model)
+    }
+
+    func openLink(_ urlString: String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        UIApplication.shared.open(url)
     }
 }
 

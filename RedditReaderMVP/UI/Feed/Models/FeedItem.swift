@@ -19,26 +19,40 @@ struct FeedItemData: Decodable {
     let data: FeedItem
 }
 
+enum PostHint: String, Decodable {
+    case link = "link"
+    case image = "image"
+    case unknown = "unknown"
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+
+        switch rawValue {
+        case "link":                self = .link
+        case "image":               self = .image
+        default:                    self = .unknown
+        }
+    }
+}
+
 struct FeedItem: Decodable {
     let id: String
     let title: String
     let author: String
     let createdDate: Float
     let commentsNumber: Int
-    let thumbnail: String
-    let thumbnailHeight: Int?
-    let thumbnailWidth: Int?
+    let url: String
     let isVideo: Bool
+    let postHint: PostHint?
+    let permalink: String
 
     enum CodingKeys: String, CodingKey {
-        case title, author, thumbnail
-//        case title, author
-//        case thumbnail = "url_overridden_by_dest"
+        case title, author, url, permalink
         case id = "name"
         case createdDate = "created"
         case commentsNumber = "num_comments"
-        case thumbnailHeight = "thumbnail_height"
-        case thumbnailWidth = "thumbnail_width"
         case isVideo = "is_video"
+        case postHint = "post_hint"
     }
 }

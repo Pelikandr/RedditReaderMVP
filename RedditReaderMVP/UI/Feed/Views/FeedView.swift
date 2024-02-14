@@ -13,6 +13,7 @@ final class FeedView: UIView, XibLoadable {
     private var feedItems = [FeedItem]()
 
     private var loadNewItems: (() -> Void)?
+    private var openLink: ((String) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,18 @@ final class FeedView: UIView, XibLoadable {
 
     func update(with model: Feed) {
         loadNewItems = model.loadNewItems
-        feedItems = model.feedItems
-        tableView.reloadData()
+        openLink = model.openLink
+
+        let newItems = model.newFeedItems
+        let startIndex = feedItems.count
+        let endIndex = startIndex + newItems.count - 1
+        feedItems.append(contentsOf: newItems)
+
+        let indexPaths = (startIndex...endIndex).map { IndexPath(row: $0, section: 0) }
+
+        tableView.beginUpdates()
+        tableView.insertRows(at: indexPaths, with: .top)
+        tableView.endUpdates()
     }
 
     private func setupTableView() {
@@ -53,6 +64,16 @@ extension FeedView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let feedItem = feedItems[indexPath.row]
+
+        switch feedItem.postHint {
+        case .link:
+            openLink?(feedItem.url)
+
+        default:
+            // TODO: [D. Zaiakin] implement
+            print("Open details")
+        }
+
         print(feedItem)
     }
 

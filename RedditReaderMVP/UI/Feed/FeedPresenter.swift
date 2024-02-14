@@ -9,6 +9,7 @@ import Foundation
 
 protocol FeedViewDelegate: NSObjectProtocol {
     func updateFeed(with model: Feed)
+    func openLink(_ urlString: String)
 }
 
 final class FeedPresenter {
@@ -38,11 +39,14 @@ final class FeedPresenter {
 
 // MARK: - Private
 extension FeedPresenter {
-    private func updateModel() {
+    private func updateModel(with newItems: [FeedItem]) {
         let model = Feed(
-            feedItems: feedItems,
+            newFeedItems: newItems,
             loadNewItems: { [weak self] in
                 self?.getNewFeedItems()
+            },
+            openLink: { [weak self] urlString in
+                self?.delegate?.openLink(urlString)
             })
         
         delegate?.updateFeed(with: model)
@@ -54,12 +58,18 @@ extension FeedPresenter {
         networkManager.request(target: target, completion: { [weak self] (result: Result<FeedResponse, String>) in
             switch result {
             case .success(let response):
+                var newItems: [FeedItem] = []
                 response.data.children.forEach {
-                    self?.feedItems.append($0.data)
+                    guard !$0.data.isVideo else {
+                        return
+                    }
+                    
+                    newItems.append($0.data)
                 }
 
+                self?.feedItems.append(contentsOf: newItems)
                 DispatchQueue.main.async {
-                    self?.updateModel()
+                    self?.updateModel(with: newItems)
                 }
 
             case .failure(let error):

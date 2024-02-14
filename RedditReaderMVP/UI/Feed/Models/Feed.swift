@@ -8,6 +8,7 @@
 import Foundation
 
 struct Feed {
-    let feedItems: [FeedItem]
+    let newFeedItems: [FeedItem]
     let loadNewItems: () -> Void
+    let openLink: (String) -> Void
 }
