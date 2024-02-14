@@ -5,7 +5,7 @@
 //  Created by Denys Zaiakin on 07.01.2024.
 //
 
-import Foundation
+import NetworkLayer
 
 enum NetworkEnvironment {
     case qa
@@ -13,12 +13,12 @@ enum NetworkEnvironment {
     case staging
 }
 
-public enum RedditTarget {
+enum RedditTarget {
     case feed(after: String?, limit: Int = 10)
 }
 
 extension RedditTarget: EndPointType {
-    var environmentBaseURL : String {
+    var environmentBaseURL: String {
         switch NetworkManager.environment {
         case .production:                       return "https://www.reddit.com/"
         case .qa:                               return "https://www.reddit.com/"
@@ -47,7 +47,7 @@ extension RedditTarget: EndPointType {
         switch self {
         case .feed(let after, let limit):
             let parameters = ["after": after ?? "",
-                              "limit": limit] as [String : Any]
+                              "limit": limit] as [String: Any]
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: parameters)

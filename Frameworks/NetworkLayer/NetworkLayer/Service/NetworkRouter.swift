@@ -1,6 +1,6 @@
 //
 //  NetworkRouter.swift
-//  RedditReaderMVP
+//  NetworkLayer
 //
 //  Created by Denys Zaiakin on 06.01.2024.
 //
@@ -9,17 +9,19 @@ import Foundation
 
 public typealias NetworkRouterCompletion = (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> ()
 
-protocol NetworkRouter: AnyObject {
+public protocol NetworkRouter: AnyObject {
     associatedtype EndPoint: EndPointType
     func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion)
     func cancel()
 }
 
-class Router<EndPoint: EndPointType>: NetworkRouter {
+public class Router<EndPoint: EndPointType>: NetworkRouter {
     private var task: URLSessionTask?
     private var progressObserver: NSKeyValueObservation?
 
-    func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
+    public init() { }
+
+    public func request(_ route: EndPoint, completion: @escaping NetworkRouterCompletion) {
         let session = URLSession.shared
         do {
             let request = try buildRequest(from: route)
@@ -34,7 +36,7 @@ class Router<EndPoint: EndPointType>: NetworkRouter {
         task?.resume()
     }
 
-    func cancel() {
+    public func cancel() {
         task?.cancel()
     }
 

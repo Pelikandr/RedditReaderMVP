@@ -1,6 +1,6 @@
 //
 //  NetworkLogger.swift
-//  RedditReaderMVP
+//  NetworkLayer
 //
 //  Created by Denys Zaiakin on 06.01.2024.
 //
@@ -9,7 +9,6 @@ import Foundation
 
 class NetworkLogger {
     static func log(request: URLRequest) {
-
         print("\n - - - - - - - - - - OUTGOING - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  END - - - - - - - - - - \n") }
 

@@ -5,7 +5,7 @@
 //  Created by Denys Zaiakin on 12.01.2024.
 //
 
-import Foundation
+import NetworkLayer
 
 enum MediaTarget {
     case downloadImage(downloadUrl: String)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkLayer
 
 typealias ImageDownloadProgressHandler = (Float) -> Void
 

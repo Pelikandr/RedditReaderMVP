@@ -1,13 +1,13 @@
 //
 //  ParameterEncoding.swift
-//  RedditReaderMVP
+//  NetworkLayer
 //
 //  Created by Denys Zaiakin on 06.01.2024.
 //
 
 import Foundation
 
-public enum NetworkError : String, Error {
+public enum NetworkError: String, Error {
     case parametersNil = "Parameters were nil."
     case encodingFailed = "Parameter encoding failed."
     case missingURL = "URL is nil."

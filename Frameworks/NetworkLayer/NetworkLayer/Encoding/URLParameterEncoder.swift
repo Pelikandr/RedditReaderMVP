@@ -1,6 +1,6 @@
 //
 //  URLParameterEncoder.swift
-//  RedditReaderMVP
+//  NetworkLayer
 //
 //  Created by Denys Zaiakin on 06.01.2024.
 //

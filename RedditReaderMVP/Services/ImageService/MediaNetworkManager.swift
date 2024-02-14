@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkLayer
 
 enum ImageResult<UIImage, String>{
     case success(UIImage)
@@ -13,7 +14,7 @@ enum ImageResult<UIImage, String>{
 }
 
 struct MediaNetworkManager: Manager {
-    static let environment : NetworkEnvironment = .production
+    static let environment: NetworkEnvironment = .production
     private let router = Router<MediaTarget>()
 
     func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {
