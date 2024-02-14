@@ -1,26 +1,30 @@
 //
 //  ImageService.swift
-//  RedditReaderMVP
+//  ImageDownloadingService
 //
 //  Created by Denys Zaiakin on 12.01.2024.
 //
 
 import UIKit
 
-final class ImageService {
+public protocol ImageService {
+    func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void)
+}
+
+public class ImageDownloadingService: ImageService {
     private let cache = NSCache<NSString, UIImage>()
     private let cacheLock = NSLock()
-    private let maxMemoryCapacity: Int
-    private let cacheClearInterval: TimeInterval = 60 * 60
+    private let cacheClearInterval: TimeInterval
 
     private var cacheClearTimer: Timer?
 
     private let networkManager = MediaNetworkManager()
 
-    static let shared = ImageService()
+    public static let shared = ImageDownloadingService()
 
-    init(maxMemoryCapacity: Int = 50 * 1024 * 1024) {
-        self.maxMemoryCapacity = maxMemoryCapacity
+    init(maxMemoryCapacity: Int = 50 * 1024 * 1024,
+         cacheClearInterval: TimeInterval = 5 * 60) {
+        self.cacheClearInterval = cacheClearInterval
         cache.totalCostLimit = maxMemoryCapacity
         startCacheClearTimer()
     }
@@ -29,18 +33,7 @@ final class ImageService {
         stopCacheClearTimer()
     }
 
-    private func startCacheClearTimer() {
-        cacheClearTimer = Timer.scheduledTimer(withTimeInterval: cacheClearInterval, repeats: true) { [weak self] _ in
-            self?.clearCache()
-        }
-    }
-
-    private func stopCacheClearTimer() {
-        cacheClearTimer?.invalidate()
-        cacheClearTimer = nil
-    }
-
-    func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {
+    public func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {
         guard URL(string: url) != nil else {
             print("Invalid URL: \(url)")
             completion(.failure(""))
@@ -75,7 +68,20 @@ final class ImageService {
             }
         }
     }
+}
 
+// MARK: - Cache
+extension ImageDownloadingService {
+    private func startCacheClearTimer() {
+        cacheClearTimer = Timer.scheduledTimer(withTimeInterval: cacheClearInterval, repeats: true) { [weak self] _ in
+            self?.clearCache()
+        }
+    }
+
+    private func stopCacheClearTimer() {
+        cacheClearTimer?.invalidate()
+        cacheClearTimer = nil
+    }
 
     private func getCachedImage(for key: String) -> UIImage? {
         cacheLock.lock()
@@ -102,11 +108,5 @@ final class ImageService {
         }
 
         cache.removeAllObjects()
-    }
-}
-
-extension UIImage {
-    var diskSize: Int {
-        return self.cgImage?.bytesPerRow ?? 0 * (self.cgImage?.height ?? 0)
     }
 }

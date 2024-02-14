@@ -1,6 +1,6 @@
 //
 //  MediaNetworkManager.swift
-//  RedditReaderMVP
+//  ImageDownloadingService
 //
 //  Created by Denys Zaiakin on 14.02.2024.
 //
@@ -8,13 +8,14 @@
 import UIKit
 import NetworkLayer
 
-enum ImageResult<UIImage, String>{
+typealias ImageDownloadProgressHandler = (Float) -> Void
+
+public enum ImageResult<UIImage, String>{
     case success(UIImage)
     case failure(String)
 }
 
 struct MediaNetworkManager: Manager {
-    static let environment: NetworkEnvironment = .production
     private let router = Router<MediaTarget>()
 
     func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {

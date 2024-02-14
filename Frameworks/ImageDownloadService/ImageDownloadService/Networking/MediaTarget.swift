@@ -1,6 +1,6 @@
 //
 //  MediaTarget.swift
-//  RedditReaderMVP
+//  ImageDownloadingService
 //
 //  Created by Denys Zaiakin on 12.01.2024.
 //

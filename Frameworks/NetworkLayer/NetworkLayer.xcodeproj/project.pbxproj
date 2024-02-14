@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A54C6F12B7D4CE0006CAAB4 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A54C6F02B7D4CE0006CAAB4 /* Manager.swift */; };
 		9A5D472C2B7D473C00A94802 /* NetworkLayer.docc in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D472B2B7D473C00A94802 /* NetworkLayer.docc */; };
 		9A5D47322B7D473C00A94802 /* NetworkLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D47272B7D473C00A94802 /* NetworkLayer.framework */; };
 		9A5D47372B7D473C00A94802 /* NetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D47362B7D473C00A94802 /* NetworkLayerTests.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A54C6F02B7D4CE0006CAAB4 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		9A5D47272B7D473C00A94802 /* NetworkLayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkLayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5D472A2B7D473C00A94802 /* NetworkLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkLayer.h; sourceTree = "<group>"; };
 		9A5D472B2B7D473C00A94802 /* NetworkLayer.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NetworkLayer.docc; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				9A5D47482B7D47C700A94802 /* HTTPMethod.swift */,
 				9A5D47492B7D47C700A94802 /* NetworkLogger.swift */,
 				9A5D474A2B7D47C700A94802 /* EndPointType.swift */,
+				9A54C6F02B7D4CE0006CAAB4 /* Manager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				9A5D47512B7D47C700A94802 /* NetworkRouter.swift in Sources */,
 				9A5D472C2B7D473C00A94802 /* NetworkLayer.docc in Sources */,
 				9A5D474D2B7D47C700A94802 /* URLParameterEncoder.swift in Sources */,
+				9A54C6F12B7D4CE0006CAAB4 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

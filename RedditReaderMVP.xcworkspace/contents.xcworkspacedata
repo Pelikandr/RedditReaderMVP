@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Frameworks/NetworkLayer/NetworkLayer.xcodeproj">
+      location = "group:Frameworks/ImageDownloadService/ImageDownloadService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Frameworks/NetworkLayer/NetworkLayer.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:RedditReaderMVP.xcodeproj">

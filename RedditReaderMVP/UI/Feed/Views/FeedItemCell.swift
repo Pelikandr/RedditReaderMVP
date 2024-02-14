@@ -5,6 +5,7 @@
 //  Created by Denys Zaiakin on 07.01.2024.
 //
 
+import ImageDownloadService
 import UIKit
 
 final class FeedItemCell: UITableViewCell, XibLoadable, Reusable {
@@ -44,7 +45,8 @@ final class FeedItemCell: UITableViewCell, XibLoadable, Reusable {
             thumbnailWidthConstraint.constant = CGFloat(thumbnailWidth)
         }
 
-        thumbnailImageView.downloadImage(from: item.thumbnail) { [weak self] image in
+        let loadingImage = UIImage(named: "redditLogo")!.withRenderingMode(.alwaysTemplate)
+        thumbnailImageView.downloadImage(from: item.thumbnail, loadingImage: loadingImage) { [weak self] image in
             guard image == nil else {
                 return
             }

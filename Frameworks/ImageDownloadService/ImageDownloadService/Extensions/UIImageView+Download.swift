@@ -1,19 +1,19 @@
 //
 //  UIImageView+Download.swift
-//  RedditReaderMVP
+//  ImageDownloadService
 //
 //  Created by Denys Zaiakin on 12.01.2024.
 //
 
 import UIKit
 
-extension UIImageView {
-    func downloadImage(from url: String, placeholderImage: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+public extension UIImageView {
+    func downloadImage(from url: String, placeholderImage: UIImage? = nil, loadingImage: UIImage, completion: ((UIImage?) -> Void)? = nil) {
 
-        showLoadingIndicator()
+        showLoadingIndicator(with: loadingImage)
         self.contentMode = contentMode
 
-        ImageService.shared.downloadImage(from: url) { [weak self] result in
+        ImageDownloadingService.shared.downloadImage(from: url) { [weak self] result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -32,17 +32,14 @@ extension UIImageView {
     }
 }
 
-import UIKit
-
-extension UIImageView {
+public extension UIImageView {
     private var loadingImageViewTag: Int { return 999 }
 
-    func showLoadingIndicator() {
+    func showLoadingIndicator(with loadingImage: UIImage) {
         // Remove existing loading image view if present
         hideLoadingIndicator()
 
         // Create a rotating image view for loading
-        let loadingImage = UIImage(named: "redditLogo")?.withRenderingMode(.alwaysTemplate)
         let loadingImageView = UIImageView(image: loadingImage)
         loadingImageView.tintColor = UIColor.gray // Customize the tint color if needed
         loadingImageView.tag = loadingImageViewTag
