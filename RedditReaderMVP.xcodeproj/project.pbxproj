@@ -23,6 +23,7 @@
 		9A30921F2B4B0F5F00A9FA5F /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A30921E2B4B0F5F00A9FA5F /* Reusable.swift */; };
 		9A3092212B4B0FC900A9FA5F /* UITableView+RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3092202B4B0FC900A9FA5F /* UITableView+RegisterCell.swift */; };
 		9A3092232B4B134B00A9FA5F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3092222B4B134B00A9FA5F /* Feed.swift */; };
+		9A5D471C2B7D44EE00A94802 /* MediaNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D471B2B7D44EE00A94802 /* MediaNetworkManager.swift */; };
 		9ABC01BA2B4479DA0067A4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC01B92B4479DA0067A4F4 /* AppDelegate.swift */; };
 		9ABC01BE2B4479DA0067A4F4 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ABC01BD2B4479DA0067A4F4 /* FeedViewController.swift */; };
 		9ABC01C32B4479DB0067A4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ABC01C22B4479DB0067A4F4 /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		9A30921E2B4B0F5F00A9FA5F /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		9A3092202B4B0FC900A9FA5F /* UITableView+RegisterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RegisterCell.swift"; sourceTree = "<group>"; };
 		9A3092222B4B134B00A9FA5F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		9A5D471B2B7D44EE00A94802 /* MediaNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaNetworkManager.swift; sourceTree = "<group>"; };
 		9ABC01B62B4479DA0067A4F4 /* RedditReaderMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditReaderMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ABC01B92B4479DA0067A4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ABC01BD2B4479DA0067A4F4 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		9A3092132B4AEB9900A9FA5F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				9A5D471B2B7D44EE00A94802 /* MediaNetworkManager.swift */,
 				9A3092142B4AEBA700A9FA5F /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -450,6 +453,7 @@
 				9A30920B2B49BA8F00A9FA5F /* URLParameterEncoder.swift in Sources */,
 				9A3092152B4AEBA700A9FA5F /* NetworkManager.swift in Sources */,
 				9A3092092B49BA6600A9FA5F /* JSONParameterEncoder.swift in Sources */,
+				9A5D471C2B7D44EE00A94802 /* MediaNetworkManager.swift in Sources */,
 				9ABC01FA2B448BEB0067A4F4 /* XibLoadable.swift in Sources */,
 				9A3092122B4AEAE600A9FA5F /* RedditTarget.swift in Sources */,
 				9A30921F2B4B0F5F00A9FA5F /* Reusable.swift in Sources */,

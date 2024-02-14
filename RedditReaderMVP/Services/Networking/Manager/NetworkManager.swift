@@ -24,50 +24,9 @@ enum Result<D, String> where D: Decodable {
     case failure(String)
 }
 
-enum ImageResult<UIImage, String>{
-    case success(UIImage)
-    case failure(String)
-}
-
 enum RequestResult<String> {
     case success
     case failure(String)
-}
-
-struct MediaNetworkManager: Manager {
-    static let environment : NetworkEnvironment = .production
-    private let router = Router<MediaTarget>()
-
-    func downloadImage(from url: String, completion: @escaping (ImageResult<UIImage, String>) -> Void) {
-        let target = MediaTarget.downloadImage(downloadUrl: url)
-        router.request(target, completion: { data, response, error in
-            guard let response = response as? HTTPURLResponse else {
-                completion(.failure(error?.localizedDescription ?? "Response is nil"))
-                return
-            }
-
-            let result = handleNetworkResponse(response)
-            switch result {
-            case .success:
-                guard let data else {
-                    completion(.failure(NetworkResponse.noData.rawValue))
-                    return
-                }
-
-                guard let mimeType = response.mimeType,
-                      mimeType.hasPrefix("image"),
-                      let image = UIImage(data: data) else {
-                    completion(.failure("No image found"))
-                    return
-                }
-
-                completion(.success(image))
-
-            case .failure(let networkFailureError):
-                completion(.failure(networkFailureError))
-            }
-        })
-    }
 }
 
 struct NetworkManager: Manager {
@@ -106,17 +65,8 @@ struct NetworkManager: Manager {
             }
         })
     }
-
-//    fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> RequestResult<String> {
-//        switch response.statusCode {
-//        case 200...299: return .success
-//        case 401...500: return .failure(NetworkResponse.authenticationError.rawValue)
-//        case 501...599: return .failure(NetworkResponse.badRequest.rawValue)
-//        case 600: return .failure(NetworkResponse.outdated.rawValue)
-//        default: return .failure(NetworkResponse.failed.rawValue)
-//        }
-//    }
 }
+
 
 protocol Manager {
     func handleNetworkResponse(_ response: HTTPURLResponse) -> RequestResult<String>
