@@ -11,7 +11,6 @@ final class FeedView: UIView, XibLoadable {
     @IBOutlet private var tableView: UITableView!
 
     private var feedItems = [FeedItem]()
-
     private var loadNewItems: (() -> Void)?
     private var openLink: ((String) -> Void)?
 
