@@ -9,8 +9,8 @@ import NetworkLayer
 
 enum NetworkEnvironment {
     case dev
-    case staging
-    case production
+    case stg
+    case prod
 
 }
 
@@ -22,8 +22,8 @@ extension RedditTarget: EndPointType {
     var environmentBaseURL: String {
         switch NetworkManager.environment {
         case .dev:                              return "https://www.reddit.com/"
-        case .staging:                          return "https://www.reddit.com/"
-        case .production:                       return "https://www.reddit.com/"
+        case .stg:                              return "https://www.reddit.com/"
+        case .prod:                             return "https://www.reddit.com/"
         }
     }
 
