@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol FeedViewDelegate: NSObjectProtocol {
+protocol FeedViewDelegate: AnyObject {
     func updateFeed(with model: Feed)
     func openLink(_ urlString: String)
 }
 
 final class FeedPresenter {
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerType
 
     weak private var delegate: FeedViewDelegate?
 
@@ -22,7 +22,7 @@ final class FeedPresenter {
         return feedItems.last?.id
     }
 
-    init(networkManager: NetworkManager = NetworkManager()) {
+    init(networkManager: NetworkManagerType = NetworkManager()) {
         self.networkManager = networkManager
     }
 
@@ -53,7 +53,7 @@ extension FeedPresenter {
     }
 
     // MARK: - Networking
-    private func getNewFeedItems() {
+    func getNewFeedItems() {
         let target = RedditTarget.feed(after: lastPostId)
         networkManager.request(target: target, completion: { [weak self] (result: Result<FeedResponse, String>) in
             switch result {

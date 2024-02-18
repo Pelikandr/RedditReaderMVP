@@ -11,7 +11,6 @@ enum NetworkEnvironment {
     case dev
     case stg
     case prod
-
 }
 
 enum RedditTarget {

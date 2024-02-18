@@ -13,8 +13,12 @@ enum Result<D, String> where D: Decodable {
     case failure(String)
 }
 
-struct NetworkManager: Manager {
-    static let environment: NetworkEnvironment = .production
+protocol NetworkManagerType {
+    func request<D>(target: RedditTarget, completion: @escaping (Result<D, String>) -> Void) where D: Decodable
+}
+
+struct NetworkManager: NetworkManagerType, Manager {
+    static let environment: NetworkEnvironment = .prod
     private let router = Router<RedditTarget>()
 
     func request<D>(target: RedditTarget, completion: @escaping (Result<D, String>) -> Void) where D: Decodable {
